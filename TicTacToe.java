@@ -1,10 +1,28 @@
-import java.util.Scanner;
+public class Server {
+    public static void main(String[] args) {
+        try {
+            // Create server socket
+            ServerSocket serverSocket = new ServerSocket(500);
+            
+            System.out.println("Server started. Waiting for client...");
 
-public class TicTacToe {
-    private char[][] board;
-    private char currentPlayer;
-    private boolean gameEnded;
+            // Accept client connection
+            Socket clientSocket = serverSocket.accept();
+            System.out.println("Client connected.");
 
+            // Create input and output streams
+            InputStream input = clientSocket.getInputStream();
+            OutputStream output = clientSocket.getOutputStream();
+            
+            // Read number from client
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            String numberString = reader.readLine();
+            int number = Integer.parseInt(numberString);
+            System.out.println("Received number from client: " + number);
+
+            // Perform some math on the number
+            int result = number * 2;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public TicTacToe() {
         board = new char[3][3];
         currentPlayer = 'X';
@@ -19,8 +37,8 @@ public class TicTacToe {
     }
 
     public void playGame() {
-        Scanner scanner = new Scanner(System.in);
-
+       int row;
+        int column 
         System.out.println("Welcome to Tic-Tac-Toe!");
 
         while (!gameEnded) {
@@ -31,9 +49,12 @@ public class TicTacToe {
                 System.out.println("Player " + currentPlayer + ", enter your move (row [0-2] and column [0-2]):");
                 // ici la sockete venu du app 
                 //ici
-                int row = scanner.nextInt();
-                int col = scanner.nextInt();
+// The number to be transformed
 
+        // Calculate the matrix position
+        row = (number - 1) / 3;
+        column = (number - 1) % 3;
+               
                 if (isValidMove(row, col)) {
                     board[row][col] = currentPlayer;
 
@@ -68,6 +89,18 @@ public class TicTacToe {
         System.out.println("Game over.");
         printBoard();
         scanner.close();
+  int number = row * 3 + column + 1;
+            // Send the result back to the client
+            PrintWriter writer = new PrintWriter(output, true);
+            writer.println(result);
+            System.out.println("Sent result to client: " + result);
+
+            // Close the sockets
+            clientSocket.close();
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void makeAIMove() {
@@ -192,5 +225,9 @@ public class TicTacToe {
     public static void main(String[] args) {
         TicTacToe game = new TicTacToe();
         game.playGame();
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          
     }
 }
