@@ -5,6 +5,13 @@ import android.view.View;
 import android.widget.ImageView;
 import com.example.tictactoe.databinding.ActivityMainBinding;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 public class MainActivity extends AppCompatActivity {
@@ -13,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private int[] boxPositions = {0,0,0,0,0,0,0,0,0}; //9 zero
     private int playerTurn = 1;
     private int totalSelectedBoxes = 1;
+    int number=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +44,31 @@ public class MainActivity extends AppCompatActivity {
                 if (isBoxSelectable(0)){
                     performAction((ImageView) view, 0);
                 }
+                try {
+                    // Create client socket and connect to the server
+                    Socket clientSocket = new Socket("localhost", 500);
+
+                    // Create input and output streams
+                    InputStream input = clientSocket.getInputStream();
+                    OutputStream output = clientSocket.getOutputStream();
+
+                    // Send number to server
+                    PrintWriter writer = new PrintWriter(output, true);
+                     number = 1;
+                    writer.println(number);
+                    System.out.println("Sent number to server: " + number);
+
+                    // Receive the result from the server
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    String resultString = reader.readLine();
+                    int result = Integer.parseInt(resultString);
+                    System.out.println("Received result from server: " + result);
+
+                    // Close the socket
+                    clientSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         binding.image2.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +76,31 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (isBoxSelectable(1)){
                     performAction((ImageView) view, 1);
+                }
+                try {
+                    // Create client socket and connect to the server
+                    Socket clientSocket = new Socket("localhost", 500);
+
+                    // Create input and output streams
+                    InputStream input = clientSocket.getInputStream();
+                    OutputStream output = clientSocket.getOutputStream();
+
+                    // Send number to server
+                    PrintWriter writer = new PrintWriter(output, true);
+                    number = 2;
+                    writer.println(number);
+                    System.out.println("Sent number to server: " + number);
+
+                    // Receive the result from the server
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    String resultString = reader.readLine();
+                    int result = Integer.parseInt(resultString);
+                    System.out.println("Received result from server: " + result);
+
+                    // Close the socket
+                    clientSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -52,6 +110,31 @@ public class MainActivity extends AppCompatActivity {
                 if (isBoxSelectable(2)){
                     performAction((ImageView) view, 2);
                 }
+                try {
+                    // Create client socket and connect to the server
+                    Socket clientSocket = new Socket("localhost", 500);
+
+                    // Create input and output streams
+                    InputStream input = clientSocket.getInputStream();
+                    OutputStream output = clientSocket.getOutputStream();
+
+                    // Send number to server
+                    PrintWriter writer = new PrintWriter(output, true);
+                    number = 3;
+                    writer.println(number);
+                    System.out.println("Sent number to server: " + number);
+
+                    // Receive the result from the server
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    String resultString = reader.readLine();
+                    int result = Integer.parseInt(resultString);
+                    System.out.println("Received result from server: " + result);
+
+                    // Close the socket
+                    clientSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         binding.image4.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +142,31 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (isBoxSelectable(3)){
                     performAction((ImageView) view, 3);
+                }
+                try {
+                    // Create client socket and connect to the server
+                    Socket clientSocket = new Socket("localhost", 500);
+
+                    // Create input and output streams
+                    InputStream input = clientSocket.getInputStream();
+                    OutputStream output = clientSocket.getOutputStream();
+
+                    // Send number to server
+                    PrintWriter writer = new PrintWriter(output, true);
+                    number = 4;
+                    writer.println(number);
+                    System.out.println("Sent number to server: " + number);
+
+                    // Receive the result from the server
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    String resultString = reader.readLine();
+                    int result = Integer.parseInt(resultString);
+                    System.out.println("Received result from server: " + result);
+
+                    // Close the socket
+                    clientSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -68,6 +176,31 @@ public class MainActivity extends AppCompatActivity {
                 if (isBoxSelectable(4)){
                     performAction((ImageView) view, 4);
                 }
+                try {
+                    // Create client socket and connect to the server
+                    Socket clientSocket = new Socket("localhost", 500);
+
+                    // Create input and output streams
+                    InputStream input = clientSocket.getInputStream();
+                    OutputStream output = clientSocket.getOutputStream();
+
+                    // Send number to server
+                    PrintWriter writer = new PrintWriter(output, true);
+                    number = 5;
+                    writer.println(number);
+                    System.out.println("Sent number to server: " + number);
+
+                    // Receive the result from the server
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    String resultString = reader.readLine();
+                    int result = Integer.parseInt(resultString);
+                    System.out.println("Received result from server: " + result);
+
+                    // Close the socket
+                    clientSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         binding.image6.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +208,30 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (isBoxSelectable(5)){
                     performAction((ImageView) view, 5);
+                }try {
+                    // Create client socket and connect to the server
+                    Socket clientSocket = new Socket("localhost", 500);
+
+                    // Create input and output streams
+                    InputStream input = clientSocket.getInputStream();
+                    OutputStream output = clientSocket.getOutputStream();
+
+                    // Send number to server
+                    PrintWriter writer = new PrintWriter(output, true);
+                    number = 6;
+                    writer.println(number);
+                    System.out.println("Sent number to server: " + number);
+
+                    // Receive the result from the server
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    String resultString = reader.readLine();
+                    int result = Integer.parseInt(resultString);
+                    System.out.println("Received result from server: " + result);
+
+                    // Close the socket
+                    clientSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -84,6 +241,31 @@ public class MainActivity extends AppCompatActivity {
                 if (isBoxSelectable(6)){
                     performAction((ImageView) view, 6);
                 }
+                try {
+                    // Create client socket and connect to the server
+                    Socket clientSocket = new Socket("localhost", 500);
+
+                    // Create input and output streams
+                    InputStream input = clientSocket.getInputStream();
+                    OutputStream output = clientSocket.getOutputStream();
+
+                    // Send number to server
+                    PrintWriter writer = new PrintWriter(output, true);
+                    number = 7;
+                    writer.println(number);
+                    System.out.println("Sent number to server: " + number);
+
+                    // Receive the result from the server
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    String resultString = reader.readLine();
+                    int result = Integer.parseInt(resultString);
+                    System.out.println("Received result from server: " + result);
+
+                    // Close the socket
+                    clientSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         binding.image8.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +274,31 @@ public class MainActivity extends AppCompatActivity {
                 if (isBoxSelectable(7)){
                     performAction((ImageView) view, 7);
                 }
+                try {
+                    // Create client socket and connect to the server
+                    Socket clientSocket = new Socket("localhost", 500);
+
+                    // Create input and output streams
+                    InputStream input = clientSocket.getInputStream();
+                    OutputStream output = clientSocket.getOutputStream();
+
+                    // Send number to server
+                    PrintWriter writer = new PrintWriter(output, true);
+                    number = 8;
+                    writer.println(number);
+                    System.out.println("Sent number to server: " + number);
+
+                    // Receive the result from the server
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    String resultString = reader.readLine();
+                    int result = Integer.parseInt(resultString);
+                    System.out.println("Received result from server: " + result);
+
+                    // Close the socket
+                    clientSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         binding.image9.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +306,31 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (isBoxSelectable(8)){
                     performAction((ImageView) view, 8);
+                }
+                try {
+                    // Create client socket and connect to the server
+                    Socket clientSocket = new Socket("localhost", 500);
+
+                    // Create input and output streams
+                    InputStream input = clientSocket.getInputStream();
+                    OutputStream output = clientSocket.getOutputStream();
+
+                    // Send number to server
+                    PrintWriter writer = new PrintWriter(output, true);
+                    number = 9;
+                    writer.println(number);
+                    System.out.println("Sent number to server: " + number);
+
+                    // Receive the result from the server
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    String resultString = reader.readLine();
+                    int result = Integer.parseInt(resultString);
+                    System.out.println("Received result from server: " + result);
+
+                    // Close the socket
+                    clientSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
